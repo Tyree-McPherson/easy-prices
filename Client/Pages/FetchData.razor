@@ -42,7 +42,9 @@ else
     {
         try
         {
+            Console.WriteLine("Does this work? ----------------------------------------------------");
             forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/api/WeatherForecast") ?? new WeatherForecast[]{};
+            Console.WriteLine(forecasts);
         }
         catch (Exception ex)
         {

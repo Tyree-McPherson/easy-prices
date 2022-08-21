@@ -1,0 +1,51 @@
+﻿/*
+    TODO:
+    Migrate all HTML tags to this file.
+*/
+
+:root {
+    --colour-header: hsl(32, 22%, 36%);
+    --colour-white: hsl(0, 0%, 100%);
+    --colour-black: hsl(0, 0%, 0%);
+    --colour-background: hsl(0, 0%, 94%);
+    --colour-gray: hsl(0, 0%, 44%);
+    --colour-buy-button: hsl(331, 98%, 34%);
+    --colour-shopping-cart-green: hsl(151, 98%, 34%);
+    --colour-shopping-cart-red: hsl(360, 66%, 40%);
+    --colour-suspense-one: hsl(0, 0%, 71%);
+    --colour-suspense-two: hsl(136, 0%, 56%);
+}
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: hsl(0, 0%, 0%);
+    background-color: var(--colour-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+h1:focus {
+    outline: none;
+}
+
+a {
+    color: var(--colour-black);
+    font-size: 24px;
+}
+
+a:hover {
+    color: #1C1C1C;
+}
+
+button {
+    width: 90px;
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+}
+
+header {
+    height: 50px;
+}

@@ -1,17 +1,53 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager UriHelper
+@inject IJSRuntime JSRuntime
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+<div id="layout-container" class="container-fluid landing-page-background-image">
+    <header class="row">
+        <Header />
+    </header>
+    <main class="row">
+        @Body
     </main>
+    <footer class="row">
+        <Footer />
+    </footer>
 </div>
+
+@code {
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // On first page load, set the correct properties.
+            TransitionIndex();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        TransitionIndex();
+        UriHelper.LocationChanged += DetectNavigation;
+    }
+
+    // If the route gets changed, check to see if a transition needs to be made.
+    private void DetectNavigation(object sender, LocationChangedEventArgs e)
+    {
+        TransitionIndex();
+    }
+
+    private void TransitionIndex()
+    {
+        string route = UriHelper.Uri.Split("/")[3];
+
+        if (string.IsNullOrEmpty(route))
+        {
+            JSRuntime.InvokeVoidAsync("JoinIndex");
+        }
+        else
+        {
+            JSRuntime.InvokeVoidAsync("LeaveIndex");
+        }
+    }
+}

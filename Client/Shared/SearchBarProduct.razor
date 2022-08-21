@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager UriHelper
+
+<div class="search-bar-product-container">
+    <input
+        id="search-bar-product"
+        type="search"
+        placeholder="Search Products"
+        class="w-100 bg-transparent border-0 search-bar-input h6"
+        @bind="@Product"
+        @oninput="@((e) => { Product=(string)e.Value;})"
+        @onkeypress="@((e) => OnKeyPress(e))"
+    />
+    <img src="images/search-icon.png" width="20" height="20" class="search-bar-icon" @onclick="SearchProduct" />
+</div>
+
+@code {
+    private string Product { get; set; } = "";
+
+    protected override void OnInitialized()
+    {
+        // Get the value of the query parameter.
+        var Uri = UriHelper.ToAbsoluteUri(UriHelper.Uri);
+
+        QueryHelpers.ParseQuery(Uri.Query).TryGetValue("product", out var ProductSearch);
+
+        Product = ProductSearch;
+    }
+
+    private void OnKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            SearchProduct();
+        }
+    }
+
+    private void SearchProduct()
+    {
+        UriHelper.NavigateTo($"/products?product={Product}", true);
+    }
+}

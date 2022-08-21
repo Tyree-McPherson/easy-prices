@@ -1,0 +1,14 @@
+﻿<a href="/@Href.ToLower()" id="@Id" class="text-decoration-none">
+    @Text
+</a>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = "";
+
+    [Parameter]
+    public string Href { get; set; } = "";
+
+    [Parameter]
+    public string? Id { get; set; } = "";
+}

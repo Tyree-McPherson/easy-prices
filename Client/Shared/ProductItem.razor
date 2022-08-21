@@ -1,0 +1,62 @@
+﻿<div class="product-item-container">
+    <div class="product-item-image-container">
+        <a href="@Href">
+            <img src="@Image" alt="@Alt" class="product-item-image" />
+        </a>
+    </div>
+    <div class="product-item-content-container">
+        <div>
+            <h2 title="@Title">
+                <a href="@Href" class="text-decoration-none">@Title</a>
+            </h2>
+            <p class="product-item-paragraph">@Paragraph</p>
+        </div>
+        <div>
+            <h4>@Price</h4>
+            <div class="product-item-buy-now-add-to-cart-container">
+                <a href="@Href">
+                    <Button Text="Buy Now" Classes="button-buy" />
+                </a>
+                <img
+                    src="/images/shopping-cart-svg.svg"
+                    title="Add to cart"
+                    height="34"
+                    role="button"
+                    class="@CartStatus"
+                    @onclick="AddToCart"
+                />
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Alt { get; set; }
+
+    [Parameter]
+    public string Href { get; set; }
+
+    [Parameter]
+    public string Image { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Paragraph { get; set; }
+
+    [Parameter]
+    public string Price { get; set; }
+
+    [Parameter]
+    public string? CartStatus { get; set; }
+
+    private void AddToCart()
+    {
+        Console.WriteLine("it works!");
+
+        // TODO:
+        // If the user is logged out, redirect to the login page with a custom message.
+    }
+}

@@ -2,11 +2,19 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "dbUser": "bde9841bc04413",
+    "dbPassword": "2ce79103",
+    "dbHost": "us-cdbr-east-06.cleardb.net",
+    "dbDatabase": "heroku_fd276b72a5e2e95"
   },
   "Host": {
     "LocalHttpPort": 7071,
     "CORS": "*",
     "CORSCredentials": false
+  },
+  "ConnectionStrings": {
+    "Default": "server=us-cdbr-east-06.cleardb.net;user=bde9841bc04413;password=2ce79103;database=heroku_fd276b72a5e2e95",
+    "DefaultConnection": "server=us-cdbr-east-06.cleardb.net;user=bde9841bc04413;password=2ce79103;database=heroku_fd276b72a5e2e95"
   }
 }

@@ -1,0 +1,20 @@
+﻿@inject NavigationManager UriHelper
+
+<button class=" button @Classes" @onclick="ButtonClick">@Text</button>
+
+@code {
+
+    [Parameter]
+    public string? Text { get; set; }
+
+    [Parameter]
+    public string? Classes { get; set; }
+
+    [Parameter]
+    public string Href { get; set; } = "";
+
+    private void ButtonClick()
+    {
+        UriHelper.NavigateTo(Href);
+    }
+}
