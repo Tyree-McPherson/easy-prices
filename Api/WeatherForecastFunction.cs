@@ -69,7 +69,7 @@ namespace BlazorApp.Api
                 Summary = GetSummary(temp)
             }).ToArray();
 
-            return new OkObjectResult(result);
+            return (IActionResult)temps;
         }
 
 
