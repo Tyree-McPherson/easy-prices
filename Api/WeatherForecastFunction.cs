@@ -12,6 +12,7 @@ using MySqlConnector;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace BlazorApp.Api
 {
@@ -42,6 +43,10 @@ namespace BlazorApp.Api
             //List<T> data = new 
         }
 
+        private static readonly HttpClient client = new HttpClient();
+
+        
+
         [FunctionName("WeatherForecast")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
@@ -50,7 +55,9 @@ namespace BlazorApp.Api
 
             //return DataAccessService()
 
-            
+            var temps = client.GetStringAsync("https://www.amazon.com/s?k=shoes&crid=2VXD1Z67RIWKG&sprefix=shoes%2Caps%2C93&ref=nb_sb_noss_1");
+
+            Console.WriteLine(temps);
 
             var randomNumber = new Random();
             var temp = 0;

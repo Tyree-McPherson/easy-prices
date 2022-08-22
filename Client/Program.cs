@@ -8,4 +8,21 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["API_Prefix"] ?? builder.HostEnvironment.BaseAddress) });
 
-await builder.Build().RunAsync();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: "MyPolicy",
+//        builder =>
+//        {
+//            builder.AllowAnyOrigin()
+//                    .AllowAnyMethod()
+//                    .AllowAnyHeader();
+//        });
+//});
+
+
+
+var app = builder.Build();
+
+//app.useCors();
+
+await app.RunAsync();
